@@ -12,7 +12,7 @@
   "devDependencies": {
     "@types/node": "^20.11.17",
     "@types/pg": "^8.11.0",
-    "sst": "^2.40.3",
+    "sst": "^4.17.1",
     "vitest": "^1.2.2"
   },
   "dependencies": {
