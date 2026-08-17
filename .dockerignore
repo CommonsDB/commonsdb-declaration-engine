@@ -1,0 +1,13 @@
+node_modules
+**/node_modules
+.sst
+.git
+cdk.context.json
+debug
+tests
+integration-tests
+bruno
+terra
+*.pem
+*.log
+.backfill-iroh-state*.json

@@ -1,0 +1,77 @@
+{
+  "signature": "<ES256 JWT over publicMetadata; header carries the declarer's JWK/x5c>",
+
+  "tsaSignature": {
+    "tsr": "<base64 RFC 3161 TimeStampResp over the declaration signature>",
+    "tsq": "<base64 RFC 3161 TimeStampReq>"
+  },
+
+  "commonsDbRegistrySignature": "<ES256 JWT over the commonsDbRegistry block>",
+
+  "commonsDbRegistryTsaSignature": {
+    "tsr": "<base64 RFC 3161 TimeStampResp over the registry signature>",
+    "tsq": "<base64 RFC 3161 TimeStampReq>"
+  },
+
+  "declarationMetadata": {
+    "publicMetadata": {
+      "$schema": "https://w3id.org/commonsdb/schema/0.2.0.json",
+      "@context": "https://w3id.org/commonsdb/context/0.2.0.json",
+      "iscc": "ISCC:KAC2IJRHGCFSOVKSFF36P3BQGZBMAETBFZIPBOTJR4UBEVIHTOIJMSY",
+      "name": "Example Work Title",
+      "description": "A short human-readable description of the declared work.",
+      "mediatype": "image/webp",
+      "thumbnail": "<base64 thumbnail bytes>",
+      "sourceUrl": "https://example.org/items/123",
+      "version": 1,
+      "timestamp": 1761634456015,
+      "declarerId": "did:key:zExampleDeclarerDidKeyReplaceWithARealP256DidKey000000000000",
+
+      "credentials": [
+        {
+          "id": "urn:uuid:00000000-0000-4000-8000-000000000000",
+          "type": ["VerifiableCredential", "VerifiableAttestation", "VerifiableSupplier"],
+          "issuer": "did:web:issuer.example",
+          "@context": ["https://www.w3.org/ns/credentials/v2"],
+          "validFrom": "2025-01-01T00:00:00.000Z",
+          "validUntil": "2028-01-01T00:00:00.000Z",
+          "credentialSchema": [
+            {
+              "id": "https://example.org/schemas/verifiable-supplier.json",
+              "type": "JsonSchema"
+            }
+          ],
+          "credentialSubject": {
+            "id": "did:key:zExampleDeclarerDidKeyReplaceWithARealP256DidKey000000000000",
+            "sameAs": "Example Data Supplier",
+            "dataSupplierFor": "registry.commonsdb.org"
+          },
+          "proof": {
+            "type": "JwtProof2020",
+            "jwt": "<issuer-signed RS256 JWT credential proof>"
+          }
+        }
+      ],
+
+      "supplierMetadata": {
+        "location": "https://example.org/items/123",
+        "name": "Example Work Title",
+        "description": "A short human-readable description of the declared work.",
+        "steward": "Example Archive",
+        "rightsStatement": "https://creativecommons.org/publicdomain/mark/1.0/"
+      }
+    },
+
+    "commonsDbRegistry": {
+      "iscc": "ISCC:KAC2IJRHGCFSOVKSFF36P3BQGZBMAETBFZIPBOTJR4UBEVIHTOIJMSY",
+      "location": "https://example.org/items/123",
+      "rightsStatement": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "timestamp": 1761634456015,
+      "credentials": [
+        {
+          "proof": "<issuer-signed RS256 JWT credential proof>"
+        }
+      ]
+    }
+  }
+}

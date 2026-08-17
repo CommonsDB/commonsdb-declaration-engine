@@ -1,0 +1,15 @@
+{
+  "extends": "./node_modules/@tsconfig/node20/tsconfig.json",
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "@commonsdb/core/*": ["packages/core/src/*"]
+    }
+  },
+  "exclude": ["node_modules", "integration-tests"]
+}

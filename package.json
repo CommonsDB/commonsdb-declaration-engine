@@ -1,0 +1,46 @@
+{
+  "name": "commonsdb-serverless",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Serverless backend for the CommonsDB declaration registry — a public, verifiable registry of cryptographically signed content declarations (ISCC + DID + RFC 3161) with similarity search.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yurykharytanovich/commonsdb-serverless.git"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev:stag": "sst dev --stage staging",
+    "build": "sst build",
+    "staging": "sh ./deploy-staging.sh",
+    "prod": "sh ./deploy-prod.sh",
+    "remove": "sst remove",
+    "console": "sst console",
+    "typecheck": "tsc --noEmit",
+    "test": "pnpm -r --if-present test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "backfill:iroh-registry": "npx tsx ./scripts/backfillIrohRegistry.ts",
+    "verify:iroh-registry": "npx tsx ./scripts/verifyIrohRegistry.ts"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "aws-cdk-lib": "2.124.0",
+    "constructs": "10.3.0",
+    "prettier": "^3.3.3",
+    "sst": "^2.40.3",
+    "tsx": "^4.22.5",
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.529.1",
+    "@aws-sdk/client-kinesis": "^3.588.0",
+    "@aws-sdk/client-s3": "^3.515.0",
+    "@aws-sdk/lib-dynamodb": "^3.529.1",
+    "@noble/hashes": "^2.2.0"
+  },
+  "packageManager": "pnpm@10.18.2+sha512.9fb969fa749b3ade6035e0f109f0b8a60b5d08a1a87fdf72e337da90dcc93336e2280ca4e44f2358a649b83c17959e9993e777c2080879f3801e6f0d999ad3dd"
+}

@@ -1,0 +1,9 @@
+node_modules
+.sst
+.build
+.open-next
+pnpm-lock.yaml
+integration-tests/package-lock.json
+dist
+coverage
+*.md

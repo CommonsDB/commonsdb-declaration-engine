@@ -1,0 +1,19 @@
+# Environment and secrets
+.env
+*.pem
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+coverage/
+
+# IDE
+.vscode/
+.idea/
+
+# Test artifacts
+*.log
+test-results/
+

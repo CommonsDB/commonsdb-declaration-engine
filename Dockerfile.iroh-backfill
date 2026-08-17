@@ -1,0 +1,21 @@
+# One-off container for scripts/backfillIrohRegistry.ts — lets the
+# iroh-registry backfill/reconciliation run inside AWS (ECS run-task, same
+# region as the data) instead of pumping ~40 GB through an operator's
+# machine. Build from the repo root:
+#   docker build -f Dockerfile.iroh-backfill -t <ecr>/registry-backfill:latest .
+FROM node:20-slim
+
+RUN corepack enable
+WORKDIR /app
+
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.json ./
+COPY packages ./packages
+COPY scripts ./scripts
+
+RUN pnpm install --frozen-lockfile
+
+# Generic runner: the ECS run-task command override picks the script —
+# ./scripts/backfillIrohRegistry.ts (default) or ./scripts/verifyIrohRegistry.ts —
+# plus its flags; table/bucket/stream names come via environment overrides.
+ENTRYPOINT ["npx", "tsx"]
+CMD ["./scripts/backfillIrohRegistry.ts"]
